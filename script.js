@@ -320,14 +320,15 @@ function setActiveFilter(filter) {
     filterButtons.forEach(btn => {
         btn.classList.remove('active');
         btn.classList.add('bg-gray-200', 'text-gray-700');
-        btn.classList.remove('bg-green-600', 'text-white');
+        btn.style.background = '';
     });
-    
+
     const activeBtn = document.getElementById(`filter-${filter}`);
     if (activeBtn) {
         activeBtn.classList.add('active');
         activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
-        activeBtn.classList.add('bg-green-600', 'text-white');
+        activeBtn.style.background = 'linear-gradient(135deg, #10b981, #3b82f6)';
+        activeBtn.classList.add('text-white');
     }
 }
 
