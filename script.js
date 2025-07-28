@@ -341,16 +341,17 @@ function animateCartButton() {
 function showAddToCartFeedback() {
     // Create a temporary notification
     const notification = document.createElement('div');
-    notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 slide-in-right';
+    notification.className = 'fixed top-20 right-4 text-white px-6 py-3 rounded-lg shadow-lg z-50 slide-in-right';
+    notification.style.background = 'linear-gradient(135deg, #10b981, #3b82f6)';
     notification.innerHTML = `
         <div class="flex items-center space-x-2">
             <i class="fas fa-check-circle"></i>
             <span>Item added to cart!</span>
         </div>
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transform = 'translateX(100%)';
