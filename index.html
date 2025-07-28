@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Market - Natural Foods Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50 border-b-2 border-blue-100">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-leaf text-white text-lg"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Fresh Market</h1>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors duration-300">Home</a>
+                    <a href="#categories" class="text-gray-700 hover:text-blue-600 transition-colors duration-300">Categories</a>
+                    <a href="#products" class="text-gray-700 hover:text-blue-600 transition-colors duration-300">Products</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors duration-300">About</a>
+                </nav>
+
+                <!-- Cart -->
+                <div class="flex items-center space-x-4">
+                    <button id="cart-btn" class="relative bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-shopping-cart mr-2"></i>
+                        Cart
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center cart-bounce">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-green-500 via-blue-500 to-green-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-5xl font-bold mb-6 animate-fade-in">Fresh Natural Foods</h2>
+            <p class="text-xl mb-8 animate-fade-in-delay">Your source for healthy, naturally dried foods straight from farmers</p>
+            <button onclick="scrollToProducts()" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 animate-bounce-subtle">
+                Shop Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-16">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Shop by Categories</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-green-400" data-category="vegetables">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-carrot text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Vegetables</h4>
+                    <p class="text-sm text-blue-600 mt-2">25 Products</p>
+                </div>
+
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-blue-400" data-category="fruits">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-apple-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Fruits</h4>
+                    <p class="text-sm text-green-600 mt-2">18 Products</p>
+                </div>
+
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-green-400" data-category="grains">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-seedling text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Grains</h4>
+                    <p class="text-sm text-blue-600 mt-2">12 Products</p>
+                </div>
+
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-blue-400" data-category="teas">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mug-hot text-blue-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Teas</h4>
+                    <p class="text-sm text-green-600 mt-2">15 Products</p>
+                </div>
+
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-green-400" data-category="flour">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mortar-pestle text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Flour/Meal</h4>
+                    <p class="text-sm text-blue-600 mt-2">8 Products</p>
+                </div>
+
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-blue-400" data-category="nuts">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cookie-bite text-blue-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Nuts & Seeds</h4>
+                    <p class="text-sm text-green-600 mt-2">10 Products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Featured Products</h3>
+                <div class="flex space-x-2">
+                    <button id="filter-all" class="filter-btn active px-4 py-2 rounded-lg bg-gradient-to-r from-green-500 to-blue-500 text-white">All</button>
+                    <button id="filter-vegetables" class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-green-100 hover:text-green-700">Vegetables</button>
+                    <button id="filter-fruits" class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-blue-100 hover:text-blue-700">Fruits</button>
+                    <button id="filter-grains" class="filter-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-green-100 hover:text-green-700">Grains</button>
+                </div>
+            </div>
+            
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 border-b">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold">Shopping Cart</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+            <!-- Cart items will be displayed here -->
+        </div>
+        
+        <div class="border-t p-6">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-lg font-semibold">Total:</span>
+                <span id="cart-total" class="text-xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">$0.00</span>
+            </div>
+            <button id="checkout-btn" class="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300">
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-blue-900 to-green-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center">
+                            <i class="fas fa-leaf text-white"></i>
+                        </div>
+                        <h4 class="text-xl font-bold">Fresh Market</h4>
+                    </div>
+                    <p class="text-blue-100">Your trusted source for natural, healthy foods straight from local farmers.</p>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4 text-green-300">Quick Links</h5>
+                    <ul class="space-y-2 text-blue-200">
+                        <li><a href="#home" class="hover:text-green-300 transition-colors">Home</a></li>
+                        <li><a href="#categories" class="hover:text-green-300 transition-colors">Categories</a></li>
+                        <li><a href="#products" class="hover:text-green-300 transition-colors">Products</a></li>
+                        <li><a href="#about" class="hover:text-green-300 transition-colors">About</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-semibold mb-4 text-blue-300">Categories</h5>
+                    <ul class="space-y-2 text-green-200">
+                        <li><a href="#" class="hover:text-blue-300 transition-colors">Vegetables</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition-colors">Fruits</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition-colors">Grains</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition-colors">Teas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-semibold mb-4 text-green-300">Contact</h5>
+                    <div class="space-y-2 text-blue-200">
+                        <p><i class="fas fa-envelope mr-2 text-green-400"></i> info@freshmarket.com</p>
+                        <p><i class="fas fa-phone mr-2 text-blue-400"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-map-marker-alt mr-2 text-green-400"></i> 123 Market St, City</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-700 mt-8 pt-8 text-center text-blue-200">
+                <p>&copy; 2024 Fresh Market. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
