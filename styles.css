@@ -197,16 +197,16 @@ html {
 }
 
 .filter-btn.active {
-    background: linear-gradient(135deg, #10b981, #3b82f6);
+    background-color: #334155;
     color: white;
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 15px rgba(51, 65, 85, 0.3);
 }
 
 .filter-btn:not(.active):hover {
-    background-color: #e0f2fe;
+    background-color: #f0fdf4;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
 }
 
 /* Product image hover effect */
@@ -223,13 +223,13 @@ html {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #10b981, #3b82f6);
+    background-color: #10b981;
 }
 
 .add-to-cart-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
-    background: linear-gradient(135deg, #059669, #2563eb);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    background-color: #059669;
 }
 
 .add-to-cart-btn:active {
@@ -254,7 +254,7 @@ html {
 
 .quantity-btn:hover {
     transform: scale(1.1);
-    background: linear-gradient(135deg, #10b981, #3b82f6);
+    background-color: #10b981;
     color: white;
 }
 
@@ -265,10 +265,7 @@ html {
 /* Price animation */
 .price-highlight {
     animation: pulse 0.5s ease-in-out;
-    background: linear-gradient(135deg, #10b981, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #10b981;
 }
 
 /* Mobile responsive adjustments */
@@ -300,16 +297,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #10b981, #3b82f6);
+    background-color: #10b981;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #059669, #2563eb);
+    background-color: #059669;
 }
 
 /* Loading states */
@@ -326,7 +323,7 @@ html {
     width: 20px;
     height: 20px;
     margin: -10px 0 0 -10px;
-    border: 2px solid #3b82f6;
+    border: 2px solid #e2e8f0;
     border-top: 2px solid #10b981;
     border-radius: 50%;
     animation: spin 1s linear infinite;
@@ -340,7 +337,7 @@ html {
 /* Success animation */
 .success-animation {
     animation: pulse 0.5s ease-in-out;
-    background: linear-gradient(135deg, #10b981, #3b82f6) !important;
+    background-color: #10b981 !important;
 }
 
 /* Error animation */

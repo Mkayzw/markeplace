@@ -175,16 +175,16 @@ function createProductCard(product, index) {
             <img src="${product.image}" alt="${product.name}" class="product-image w-full h-48 object-cover">
             <div class="absolute top-2 right-2">
                 <button class="bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-110">
-                    <i class="far fa-heart text-gray-600 hover:text-red-500"></i>
+                    <i class="far fa-heart text-slate-400 hover:text-emerald-500"></i>
                 </button>
             </div>
         </div>
-        <div class="p-4">
-            <h4 class="font-semibold text-gray-800 mb-2">${product.name}</h4>
-            <p class="text-sm text-gray-600 mb-3">${product.description}</p>
-            <div class="flex justify-between items-center">
-                <span class="text-xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">$${product.price}</span>
-                <button onclick="addToCart(${product.id})" class="add-to-cart-btn text-white px-4 py-2 rounded-lg transition-all duration-300">
+        <div class="p-3 sm:p-4">
+            <h4 class="font-semibold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">${product.name}</h4>
+            <p class="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3 line-clamp-2">${product.description}</p>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                <span class="text-lg sm:text-xl font-bold text-emerald-600">$${product.price}</span>
+                <button onclick="addToCart(${product.id})" class="add-to-cart-btn bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg transition-all duration-300 text-sm font-medium w-full sm:w-auto">
                     <i class="fas fa-cart-plus mr-1"></i>
                     Add to Cart
                 </button>
@@ -246,8 +246,8 @@ function updateCartUI() {
     if (cart.length === 0) {
         cartItems.innerHTML = `
             <div class="text-center py-8">
-                <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
-                <p class="text-gray-500">Your cart is empty</p>
+                <i class="fas fa-shopping-cart text-4xl text-slate-300 mb-4"></i>
+                <p class="text-slate-500">Your cart is empty</p>
             </div>
         `;
     } else {
@@ -269,8 +269,8 @@ function createCartItem(item) {
     cartItem.innerHTML = `
         <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
         <div class="flex-1">
-            <h5 class="font-semibold text-sm">${item.name}</h5>
-            <p class="font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">$${item.price}</p>
+            <h5 class="font-semibold text-sm text-slate-700">${item.name}</h5>
+            <p class="font-bold text-emerald-600">$${item.price}</p>
         </div>
         <div class="flex items-center space-x-2">
             <button onclick="updateQuantity(${item.id}, -1)" class="quantity-btn w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
@@ -281,7 +281,7 @@ function createCartItem(item) {
                 <i class="fas fa-plus text-xs"></i>
             </button>
         </div>
-        <button onclick="removeFromCart(${item.id})" class="text-blue-500 hover:text-blue-700 transition-colors">
+        <button onclick="removeFromCart(${item.id})" class="text-slate-500 hover:text-slate-700 transition-colors">
             <i class="fas fa-trash text-sm"></i>
         </button>
     `;
@@ -320,15 +320,14 @@ function setActiveFilter(filter) {
     filterButtons.forEach(btn => {
         btn.classList.remove('active');
         btn.classList.add('bg-gray-200', 'text-gray-700');
-        btn.style.background = '';
+        btn.classList.remove('bg-slate-700', 'text-white');
     });
 
     const activeBtn = document.getElementById(`filter-${filter}`);
     if (activeBtn) {
         activeBtn.classList.add('active');
         activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
-        activeBtn.style.background = 'linear-gradient(135deg, #10b981, #3b82f6)';
-        activeBtn.classList.add('text-white');
+        activeBtn.classList.add('bg-slate-700', 'text-white');
     }
 }
 
@@ -342,8 +341,7 @@ function animateCartButton() {
 function showAddToCartFeedback() {
     // Create a temporary notification
     const notification = document.createElement('div');
-    notification.className = 'fixed top-20 right-4 text-white px-6 py-3 rounded-lg shadow-lg z-50 slide-in-right';
-    notification.style.background = 'linear-gradient(135deg, #10b981, #3b82f6)';
+    notification.className = 'fixed top-20 right-4 bg-emerald-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 slide-in-right';
     notification.innerHTML = `
         <div class="flex items-center space-x-2">
             <i class="fas fa-check-circle"></i>
@@ -390,25 +388,32 @@ function setupScrollAnimations() {
     });
 }
 
-// Checkout function (placeholder)
+// WhatsApp checkout function
 document.getElementById('checkout-btn').addEventListener('click', function() {
     if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
     }
     
-    // Simulate checkout process
-    this.classList.add('loading');
-    this.textContent = 'Processing...';
+    // Generate WhatsApp message with cart details
+    let message = "Hello! I'd like to place an order from ACE FIELD:\n\n";
+    let total = 0;
     
-    setTimeout(() => {
-        alert('Thank you for your order! This is a demo - no actual payment was processed.');
-        cart = [];
-        updateCartUI();
-        toggleCart();
-        this.classList.remove('loading');
-        this.textContent = 'Checkout';
-    }, 2000);
+    cart.forEach(item => {
+        message += `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+        total += item.price * item.quantity;
+    });
+    
+    message += `\nTotal: $${total.toFixed(2)}\n\n`;
+    message += "Please confirm availability and delivery details. Thank you!";
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappNumber = "263713275548"; // Remove + and spaces for URL
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappURL, '_blank');
 });
 
 // Smooth scrolling for navigation links
