@@ -396,7 +396,7 @@ document.getElementById('checkout-btn').addEventListener('click', function() {
     }
     
     // Generate WhatsApp message with cart details
-    let message = "Hello! I'd like to place an order from ACE FIELD:\n\n";
+    let message = "Hello! I'd like to place an order from ACEFIELD:\n\n";
     let total = 0;
     
     cart.forEach(item => {
